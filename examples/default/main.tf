@@ -23,7 +23,7 @@ module "cloudfront" {
   source = "../../"
 
   environment = "forest"
-  name        = "test"
+  name        = "default"
   subdomain   = "cdn"
 
   dns_name = "${local.dns}"

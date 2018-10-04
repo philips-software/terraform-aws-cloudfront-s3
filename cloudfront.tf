@@ -2,6 +2,10 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
   comment = "${var.environment}-cloudfront-access-identity"
 }
 
+locals {
+  dns_alias = "${local.subdomain}.${var.dns_name}"
+}
+
 resource "aws_cloudfront_distribution" "web" {
   origin {
     domain_name = "${aws_s3_bucket.web.bucket_regional_domain_name}"
@@ -22,6 +26,7 @@ resource "aws_cloudfront_distribution" "web" {
   enabled             = true
   is_ipv6_enabled     = true
   default_root_object = "${var.default_root_object}"
+  aliases             = "${compact(list(var.enable_route53_record ? local.dns_alias : ""))}"
 
   default_cache_behavior {
     allowed_methods  = "${var.default_cache_behavior_allowed_methods}"
@@ -49,9 +54,8 @@ resource "aws_cloudfront_distribution" "web" {
 
   viewer_certificate {
     cloudfront_default_certificate = "${var.enable_route53_record ? false : true}"
-
-    acm_certificate_arn      = "${var.enable_route53_record ? var.ssl_certificate_arn : ""}"
-    ssl_support_method       = "sni-only"
-    minimum_protocol_version = "${var.ssl_minimum_protocol_version}"
+    acm_certificate_arn            = "${var.enable_route53_record ? var.ssl_certificate_arn : ""}"
+    ssl_support_method             = "sni-only"
+    minimum_protocol_version       = "${var.ssl_minimum_protocol_version}"
   }
 }
