@@ -101,7 +101,7 @@ variable "bucket_acl" {
 }
 
 variable "bucket_versioning" {
-  description = "A state of versioning (documented below)"
+  description = "A state of versioning"
   default     = false
 }
 
