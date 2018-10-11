@@ -9,10 +9,10 @@ By default a route53 record will be created for the provided dns_name. The subdo
 ```
 module "cloudfront" {
   source = "philips-software/cloudfront-s3/aws"
-  version = "1.0.0"
+  version = "1.0.1"
 
   # Or via github
-  # source = "github.com/philips-software/aws-terraform-cloudfront-s3?ref=1.0.0"
+  # source = "github.com/philips-software/aws-terraform-cloudfront-s3?ref=1.0.1"
 
   environment = "forest"
   name = "default"

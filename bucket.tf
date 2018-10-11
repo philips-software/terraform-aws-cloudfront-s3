@@ -8,16 +8,6 @@ data "aws_iam_policy_document" "s3_policy" {
       identifiers = ["${aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn}"]
     }
   }
-
-  statement {
-    actions   = ["s3:ListBucket"]
-    resources = ["${aws_s3_bucket.web.arn}"]
-
-    principals {
-      type        = "AWS"
-      identifiers = ["${aws_cloudfront_origin_access_identity.origin_access_identity.iam_arn}"]
-    }
-  }
 }
 
 data "aws_caller_identity" "current" {}
@@ -37,13 +27,19 @@ resource "aws_s3_bucket" "web" {
   acl           = "${var.bucket_acl}"
   force_destroy = "${var.bucket_force_destroy}"
 
-  website = {
-    index_document = "${var.default_root_object}"
-  }
-
   tags = "${merge(map("Name", format("%s", "Bucket for CloudFront ${var.environment}")), map("Environment", format("%s", var.environment)), var.tags)}"
 
   versioning {
     enabled = "${var.bucket_versioning}"
+  }
+
+  lifecycle_rule {
+    id      = "expire-old-versions"
+    prefix  = "*"
+    enabled = "${var.bucket_versioning}"
+
+    noncurrent_version_expiration {
+      days = 7
+    }
   }
 }
