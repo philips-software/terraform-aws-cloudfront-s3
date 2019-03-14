@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- Added output variable for cloudfront distribution id and arn
+
+### Changed
+- Updated terraform version and aws provider in the examples
 
 ## 1.1.0 - 2018-10-11
 https://github.com/philips-software/terraform-aws-cloudfront-s3/tags/1.1.0
