@@ -60,8 +60,10 @@ aws s3 sync d --sse --delete . s3://<bucket>
 | Name | Description |
 |------|-------------|
 | cloudfront_bucket_arn | ARN of the bucket for serving content. |
+| cloudfront_distribution | Cloudfront distribution (id, arn) |
 | cloudfront_dns_record | The CloudFront DNS name |
 | route53_dns_record | The Rounte53 DNS name attached to CloudFront. |
+
 
 ## Automated checks
 Currently the automated checks are limited. In CI the following checks are done for the root and each example.
