@@ -1,6 +1,6 @@
 provider "aws" {
   region  = "eu-west-1"
-  version = "1.39"
+  version = "2.1.0"
 }
 
 module "cloudfront" {

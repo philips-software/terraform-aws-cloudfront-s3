@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## 1.2.0 - 2019-03-15
+### Added
+- Added output variable for cloudfront distribution id and arn
+
+### Changed
+- Updated terraform version and aws provider in the examples
+
 ## 1.1.0 - 2018-10-11
 https://github.com/philips-software/terraform-aws-cloudfront-s3/tags/1.1.0
 ### Added
@@ -19,5 +26,6 @@ https://github.com/philips-software/terraform-aws-cloudfront-s3/tags/1.1.0
 https://github.com/philips-software/terraform-aws-cloudfront-s3/tags/1.0.0
 - Initial version
 
-[Unreleased]: https://github.com/philips-software/terraform-aws-cloudfront-s3/compare/1.0.0...HEAD
-[1.0.0]: https://github.com/philips-software/terraform-aws-cloudfront-s3/compare/1.0.0...1.1.0
+[Unreleased]: https://github.com/philips-software/terraform-aws-cloudfront-s3/compare/1.2.0...HEAD
+[1.2.0]: https://github.com/philips-software/terraform-aws-cloudfront-s3/compare/1.1.0...1.2.0
+[1.1.0]: https://github.com/philips-software/terraform-aws-cloudfront-s3/compare/1.0.0...1.1.0
