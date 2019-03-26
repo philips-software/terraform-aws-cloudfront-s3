@@ -24,7 +24,7 @@ module "cloudfront" {
 
   environment = "forest"
   name        = "default"
-  subdomain   = "cdn"
+  subdomain   = "www"
 
   dns_name = "${local.dns}"
 

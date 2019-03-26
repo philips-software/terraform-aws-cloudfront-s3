@@ -109,3 +109,9 @@ variable "bucket_force_destroy" {
   description = "A boolean that indicates all objects should be deleted from the bucket so that the bucket can be destroyed without error. These objects are not recoverable."
   default     = false
 }
+
+variable "custom_error_response" {
+  description = "One or more custom error response elements (multiples allowed), see https://www.terraform.io/docs/providers/aws/r/cloudfront_distribution.html#custom-error-response-arguments"
+  type        = "list"
+  default     = []
+}
